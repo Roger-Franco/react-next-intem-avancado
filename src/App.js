@@ -1,36 +1,30 @@
-import { useEffect, useState } from 'react';
+import P from 'prop-types';
 import './App.css';
+import React, { useState, useCallback } from 'react';
 
-const eventFn = () => {
-  console.log('h1 clicado');
+const Button = React.memo(function Button({ incrementButton }) {
+  console.log('Filho, renderizou');
+  return <button onClick={() => incrementButton(100)}>+</button>;
+});
+
+Button.propTypes = {
+  incrementButton: P.func,
 };
+
 function App() {
   const [counter, setCounter] = useState(0);
 
-  useEffect(() => {
-    console.log('componentDidUpdate'); // executa toda vez que o compoenente atualiza;
-  });
-
-  useEffect(() => {
-    console.log('componentDidMount'); // executa 1x, pois não tem dependências;
+  const incrementCounter = useCallback((num) => {
+    setCounter((c) => c + num);
   }, []);
 
-  useEffect(() => {
-    console.log('Contador mudou para', counter); // executa toda vez que a dependência mudar;
-  }, [counter]);
-
-  useEffect(() => {
-    document.querySelector('h1')?.addEventListener('click', eventFn);
-    return () => {
-      // componentWillUmount => Limpa o código antes de renderizar novamente, imperdindo que ocorra acúmulo de "lixo"
-      document.querySelector('h1')?.removeEventListener('click', eventFn);
-    };
-  }, []);
+  console.log('Pai, renderizou');
 
   return (
     <div className="App">
-      <h1>Contador4: {counter}</h1>
-      <button onClick={() => setCounter(counter + 1)}>+</button>
+      <p>Teste 3</p>
+      <h1>C1: {counter}</h1>
+      <Button incrementButton={incrementCounter} />
     </div>
   );
 }
