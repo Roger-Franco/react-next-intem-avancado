@@ -9,3 +9,10 @@ ou criar a pasta .vscode com o settings ali dentro. Testar...
 npm i -D prettier eslint-plugin-prettier eslint-config-prettier
 
 npm i prop-types
+
+fiz alteracoes nas configuraçoes na linha 170 por causa desse erro: Parsing error: No Babel config file detected for( coloquei essa linha:
+// Parsing error: No Babel config file detected for (coloquei a linha abaixo por causa do erro anterior)
+  "eslint.workingDirectories": [
+    {"mode": "auto"}
+],
+ )

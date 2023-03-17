@@ -44,7 +44,9 @@ function App() {
         Click
       </button>
       <button onClick={() => dispatch({ type: 'inverter' })}>Invert</button>
-      <button onClick={() => dispatch({ type: 'QUALQUERCOiSA' })}>SEM ACTION</button>
+      <button onClick={() => dispatch({ type: 'QUALQUERCOiSA' })}>
+        SEM ACTION
+      </button>
     </div>
   );
 }
