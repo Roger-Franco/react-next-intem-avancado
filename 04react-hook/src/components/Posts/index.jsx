@@ -1,4 +1,9 @@
 import { useContext, useEffect, useRef } from 'react';
+import {
+  decrementCounter,
+  incrementCounter,
+} from '../../contexts/ExampleProvider/actions';
+import { CounterContext } from '../../contexts/ExampleProvider/context';
 import { loadPosts } from '../../contexts/PostsProvider/actions';
 import { PostsContext } from '../../contexts/PostsProvider/context';
 
@@ -8,6 +13,9 @@ export const Posts = () => {
   // console.log(postsContext);
   const { postsState, postsDispatch } = postsContext;
   // console.log(postsState);
+
+  const counterContext = useContext(CounterContext);
+  const { counterState, counterDispatch } = counterContext;
 
   useEffect(() => {
     // console.log('Carregue os posts');
@@ -20,6 +28,12 @@ export const Posts = () => {
 
   return (
     <div>
+      <button onClick={() => incrementCounter(counterDispatch)}>
+        Counter{counterState.counter}+
+      </button>
+      <button onClick={() => decrementCounter(counterDispatch)}>
+        Counter{counterState.counter}-
+      </button>
       <h1>OI from Posts</h1>
       {postsState.loading && (
         <p>
