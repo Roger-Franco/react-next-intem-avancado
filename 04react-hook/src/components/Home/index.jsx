@@ -1,43 +1,30 @@
-import { useState } from 'react';
-import { useFetch } from './use-fetch';
+import { useLayoutEffect, useRef, useState } from 'react';
 
 export const Home = () => {
-  const [postId, setPostId] = useState('');
-  const [result, loading] = useFetch(
-    'https://jsonplaceholder.typicode.com/posts/' + postId,
-    {
-      headers: {
-        abc: '1' + postId,
-      },
-    },
-  );
+  const [counted, setCounted] = useState([0, 1, 2, 3, 4]);
+  const divRef = useRef();
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  useLayoutEffect(() => {
+    const now = Date.now();
+    while (Date.now() < now + 1500);
+    divRef.current.scrollTop = divRef.current.scrollHeight;
+  });
 
-  const handleClick = (id) => {
-    setPostId(id);
+  const handleClick = () => {
+    setCounted((c) => [...c, +c.slice(-1) + 1]);
   };
 
-  if (!loading && result) {
-    // 1234
-    return (
-      <div>
-        {result?.length > 0 ? (
-          result.map((p) => (
-            <div key={`post-${p.id}`} onClick={() => handleClick(p.id)}>
-              <p>{p.title}</p>
-            </div>
-          ))
-        ) : (
-          <div onClick={() => handleClick('')}>
-            <p>{result.title}</p>
-          </div>
-        )}
+  return (
+    <>
+      <button onClick={handleClick}>Count {counted.slice(-1)}</button>
+      <div
+        ref={divRef}
+        style={{ height: '100px', width: '100px', overflowY: 'scroll' }}
+      >
+        {counted.map((c) => {
+          return <p key={`c-${c}`}>{c}</p>;
+        })}
       </div>
-    );
-  }
-
-  return <h1>Oi</h1>;
+    </>
+  );
 };
