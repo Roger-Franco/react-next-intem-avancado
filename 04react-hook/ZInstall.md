@@ -16,3 +16,6 @@ fiz alteracoes nas configuraçoes na linha 170 por causa desse erro: Parsing err
     {"mode": "auto"}
 ],
  )
+
+
+ console.log('%cState Lazy initializer - (useState + InitialValue) = ' + state, 'color: green');
