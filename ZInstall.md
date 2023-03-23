@@ -28,3 +28,6 @@ projeto 06:
 npm create vite@latest 06-tutorial-react-route-dom -- --template react-ts
 npm i react-router-dom@6
 
+=============================================
+projeto 07:
+npx create-strapi-app 07-strapi-landing-pages
