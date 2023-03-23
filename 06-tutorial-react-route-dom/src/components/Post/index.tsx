@@ -6,7 +6,7 @@ export const Post = () => {
   const {id} = params
   const [qs, setqs] = useSearchParams()
   console.log(params);
-  // http://127.0.0.1:5173/posts/10?page=120
+  // http://127.0.0.1:5173/posts/10?page=120&segundo=blabla
   
   return (
     <div>
