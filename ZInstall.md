@@ -21,3 +21,10 @@ fiz alteracoes nas configuraçoes na linha 170 por causa desse erro: Parsing err
  console.log('%cState Lazy initializer - (useState + InitialValue) = ' + state, 'color: green');
 
 rm -RF .git .cache build exports node_modules .strapi-updater.json package-lock.json (um reset ao iniciar novo projeto reaproveitando as pastas ja criadas)
+
+=============================================
+
+projeto 06:
+npm create vite@latest 06-tutorial-react-route-dom -- --template react-ts
+npm i react-router-dom@6
+
